@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>Vehicle Auction | Market Performance</title>
+<style>
+:root{color-scheme:light;--bg:#f4f7fb;--panel:#ffffff;--panel2:#f8fafc;--line:#dfe7f0;--text:#1c2a38;--muted:#62738a;--teal:#0ea58f;--blue:#386ad7;--amber:#d68a2d;--red:#d95d5d;--green:#2ca66d;font:14px/1.5 "Segoe UI",Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#edf4ff 0,transparent 60%),var(--bg);color:var(--text);min-height:100vh}.page{max-width:1500px;margin:auto;padding:28px 34px 22px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:26px}.brand{display:flex;align-items:center;gap:13px}.mark{display:grid;place-items:center;width:44px;height:44px;border:1px solid #bfe2d8;border-radius:14px;color:var(--teal);background:#e9faf6;font-weight:800;font-size:15px;letter-spacing:-1px}.eyebrow,.section-label{color:#62738a;font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase}.brand-name{font-size:13px;color:var(--muted);letter-spacing:.3px}.title{margin:3px 0 0;font-size:24px;letter-spacing:-.6px;line-height:1.2;color:var(--text)}.actions{display:flex;align-items:center;gap:12px}.coverage{font-size:12px;color:var(--muted);text-align:right}.load-btn{border:1px solid #c6d7ee;border-radius:9px;background:#edf5ff;color:#16314d;padding:10px 16px;font:600 13px inherit;cursor:pointer}.load-btn:hover{background:#e3eefb}.load-btn:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:2px}.hidden{display:none!important}.filters{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr)) auto;gap:11px;align-items:end;padding:15px;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:13px;margin-bottom:18px;box-shadow:0 1px 0 rgba(28,42,56,.02)}.filter label{display:block;font-size:10px;color:var(--muted);letter-spacing:1.1px;text-transform:uppercase;margin:0 0 6px}.filter select{width:100%;height:38px;padding:0 10px;color:var(--text);background:#fff;border:1px solid #ccd9ea;border-radius:7px;font:13px inherit}.reset{height:38px;padding:0 13px;border:1px solid #ccd9ea;border-radius:7px;background:#f8fafc;color:#21354c;font:600 12px inherit;cursor:pointer}.filter-note{grid-column:1/-1;margin:0;color:var(--muted);font-size:11px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:18px}.kpi{padding:16px 18px 15px;background:linear-gradient(145deg,#ffffff,#f8fafc 80%);border:1px solid var(--line);border-radius:12px;min-height:111px;box-shadow:0 1px 0 rgba(28,42,56,.02)}.kpi-title{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:1.3px;text-transform:uppercase}.kpi-value{font-size:27px;font-weight:700;letter-spacing:-.7px;margin:8px 0 2px;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--text)}.kpi-sub{color:var(--muted);font-size:11px}.kpi .accent{color:var(--teal)}.kpi .negative{color:var(--amber)}.charts{display:grid;grid-template-columns:1.15fr 1fr;gap:14px}.chart-card{min-width:0;padding:16px 17px 13px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 rgba(28,42,56,.02)}.chart-card.wide{grid-column:1/-1}.chart-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:8px}.chart-title{margin:0;font-size:14px;font-weight:650;letter-spacing:.05px;color:var(--text)}.chart-sub{margin:3px 0 0;color:var(--muted);font-size:11px}.chart-tag{white-space:nowrap;padding:4px 8px;border-radius:20px;color:#314562;background:#edf3ff;font-size:10px}.chart{width:100%;height:228px;display:block;overflow:visible}.chart-card.wide .chart{height:222px}.legend{display:flex;gap:16px;color:var(--muted);font-size:10px}.legend span{display:inline-flex;align-items:center;gap:6px}.dot{width:7px;height:7px;border-radius:50%;display:inline-block}.footer{display:flex;justify-content:space-between;gap:15px;margin-top:16px;padding:11px 2px 0;border-top:1px solid var(--line);color:#6d7d91;font-size:10px}.status{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:rgba(31,45,61,.28);backdrop-filter:blur(5px)}.status-box{width:min(450px,calc(100vw - 40px));padding:25px;background:#ffffff;border:1px solid #dfe7f0;border-radius:15px;box-shadow:0 24px 70px rgba(25,39,57,.16)}.status-box h2{margin:0 0 7px;font-size:19px;color:var(--text)}.status-box p{margin:0 0 17px;color:var(--muted);font-size:13px}.progress{width:100%;height:8px;border-radius:5px;background:#edf2f8;overflow:hidden}.progress>i{display:block;width:0;height:100%;border-radius:5px;background:linear-gradient(90deg,#21af9c,#6fd7c7);transition:width .15s}.status-caption{display:flex;justify-content:space-between;margin-top:10px;color:#6d7d91;font-size:11px}.notice{position:fixed;right:22px;bottom:20px;max-width:380px;padding:12px 16px;background:#fff4ea;border:1px solid #f1d0a9;border-radius:9px;color:#6b4a1a;font-size:12px;z-index:15}.empty{color:#63738a;font-size:12px;text-align:center;padding:68px 10px}@media(max-width:950px){.page{padding:20px}.filters{grid-template-columns:repeat(3,minmax(0,1fr))}.reset{width:100%}.charts{grid-template-columns:1fr}.chart-card.wide{grid-column:auto}.kpis{grid-template-columns:repeat(2,1fr)}}@media(max-width:580px){.page{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.actions{width:100%;justify-content:space-between}.filters{grid-template-columns:repeat(2,minmax(0,1fr));padding:11px}.kpis{gap:8px}.kpi{padding:13px;min-height:103px}.kpi-value{font-size:22px}.chart-card{padding:13px}.chart{height:205px}.footer{flex-direction:column;gap:5px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">VA</div>
+      <div><div class="eyebrow">Market intelligence</div><h1 class="title">Vehicle Auction Performance</h1></div>
+    </div>
+    <div class="actions">
+      <div class="coverage" id="coverage">2014–2015 auction records<br>U.S. market · source: car_prices.csv</div>
+      <button class="load-btn" id="loadButton" type="button">Load / refresh CSV</button>
+      <input id="fileInput" class="hidden" type="file" accept=".csv,text/csv">
+    </div>
+  </header>
+
+  <section class="filters" aria-label="Dashboard filters">
+    <div class="filter"><label for="yearFilter">Model year</label><select id="yearFilter" disabled><option value="">All model years</option></select></div>
+    <div class="filter"><label for="makeFilter">Make</label><select id="makeFilter" disabled><option value="">All makes</option></select></div>
+    <div class="filter"><label for="bodyFilter">Body type</label><select id="bodyFilter" disabled><option value="">All body types</option></select></div>
+    <div class="filter"><label for="stateFilter">Auction state</label><select id="stateFilter" disabled><option value="">All states</option></select></div>
+    <div class="filter"><label for="transFilter">Transmission</label><select id="transFilter" disabled><option value="">All transmissions</option></select></div>
+    <button class="reset" id="resetButton" type="button" disabled>Reset filters</button>
+    <p class="filter-note" id="filterNote">Choose your <strong>car_prices.csv</strong> once to enable cross-filtering. The file is processed locally in this browser; no data is uploaded.</p>
+  </section>
+
+  <section class="kpis" aria-label="Key performance indicators">
+    <article class="kpi"><div class="kpi-title">Valid auction listings</div><div class="kpi-value" id="kListings">558,799</div><div class="kpi-sub">Listings with a sale price and MMR</div></article>
+    <article class="kpi"><div class="kpi-title">Gross auction value</div><div class="kpi-value" id="kGross">$7.61B</div><div class="kpi-sub">Total realized selling price · USD</div></article>
+    <article class="kpi"><div class="kpi-title">Average sold price</div><div class="kpi-value" id="kAverage">$13,611</div><div class="kpi-sub">Average MMR <span id="kMmr">$13,769</span></div></article>
+    <article class="kpi"><div class="kpi-title">Average gap to MMR</div><div class="kpi-value negative" id="kGap">−$158</div><div class="kpi-sub" id="kGapSub">−1.15% of MMR · 46.7% sold above MMR</div></article>
+  </section>
+
+  <section class="charts" aria-label="Performance charts">
+    <article class="chart-card">
+      <div class="chart-head"><div><h2 class="chart-title">Average price by vehicle year</h2><p class="chart-sub">Sale price compared with Manheim Market Report value</p></div><span class="chart-tag">USD</span></div>
+      <canvas class="chart" id="yearChart" role="img" aria-label="Average sale price and MMR by vehicle model year"></canvas>
+      <div class="legend"><span><i class="dot" style="background:#54dec2"></i>Average sale price</span><span><i class="dot" style="background:#86aaff"></i>Average MMR</span></div>
+    </article>
+    <article class="chart-card">
+      <div class="chart-head"><div><h2 class="chart-title">Market gap by state</h2><p class="chart-sub">Average sale price minus MMR · highest-volume states</p></div><span class="chart-tag">USD / listing</span></div>
+      <canvas class="chart" id="stateChart" role="img" aria-label="Average auction-price gap versus MMR by state"></canvas>
+    </article>
+    <article class="chart-card">
+      <div class="chart-head"><div><h2 class="chart-title">Top vehicle makes</h2><p class="chart-sub">Auction listing volume · top 10</p></div><span class="chart-tag">Listings</span></div>
+      <canvas class="chart" id="makeChart" role="img" aria-label="Top ten vehicle makes by auction listing volume"></canvas>
+    </article>
+    <article class="chart-card">
+      <div class="chart-head"><div><h2 class="chart-title">Top 10 models by auction value</h2><p class="chart-sub">Total selling price across all matching listings</p></div><span class="chart-tag">USD</span></div>
+      <canvas class="chart" id="modelChart" role="img" aria-label="Top ten vehicle models ranked by total auction value"></canvas>
+    </article>
+    <article class="chart-card wide">
+      <div class="chart-head"><div><h2 class="chart-title">Average sold price by body type</h2><p class="chart-sub">Vehicle mix and realized selling price · categories with at least 100 listings</p></div><span class="chart-tag">USD / listing</span></div>
+      <canvas class="chart" id="bodyChart" role="img" aria-label="Average sale price by vehicle body type"></canvas>
+    </article>
+  </section>
+  <footer class="footer"><span>Benchmark: MMR (Manheim Market Report) · Gap = average sold price − average MMR</span><span>Profit is not provided in this dataset. Date coverage is uneven; no year-over-year growth claim is shown.</span></footer>
+</main>
+<div class="status hidden" id="status" role="status" aria-live="polite"><div class="status-box"><h2 id="statusTitle">Preparing dashboard</h2><p id="statusText">Reading your CSV locally.</p><div class="progress"><i id="progressBar"></i></div><div class="status-caption"><span id="progressLabel">0 listings</span><span id="progressPct">0%</span></div></div></div>
+<div id="notice" class="notice hidden" role="alert"></div>
+<script>
+(() => {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const palette = {teal:"#1ea68b",blue:"#426fe0",amber:"#d68a2d",red:"#d95d5d",muted:"#62738a",grid:"#dfe7f0",text:"#1c2a38",green:"#2ca66d"};
+  const names=["modelYear","make","model","body","state","transmission","saleMonth"];
+  const maps=Object.fromEntries(names.map(k=>[k,{ids:new Map(),labels:["Unknown"]}]));
+  const nums={modelYear:null,make:null,model:null,body:null,state:null,transmission:null,saleMonth:null,sellingprice:null,mmr:null};
+  const headersWanted=["year","make","model","body","state","transmission","saledate","sellingprice","mmr"];
+  let size=0,capacity=0,loaded=false,noticeTimer;
+  const monthNumber={Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+  function grow(){const next=Math.max(4096,capacity?Math.floor(capacity*1.65):4096);for(const k of names)nums[k]=resize(nums[k],next);nums.sellingprice=resize(nums.sellingprice,next,Float64Array);nums.mmr=resize(nums.mmr,next,Float64Array);capacity=next}
+  function resize(a,n,Type=Uint32Array){if(!a)return new Type(n);const b=new Type(n);b.set(a);return b}
+  function category(k,value){const key=(value||"").trim();if(!key)return 0;const normalized=k==="state"?key.toUpperCase():k==="modelYear"?key:key.toLowerCase();const dict=maps[k];let id=dict.ids.get(normalized);if(id===undefined){id=dict.labels.length;dict.ids.set(normalized,id);dict.labels.push(k==="make"?key.replace(/\b\w/g,ch=>ch.toUpperCase()):k==="body"||k==="transmission"?key.replace(/\b\w/g,ch=>ch.toUpperCase()):key)}return id}
+  function parseSaleMonth(value){const m=value.match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2}\s+(\d{4})\b/);if(!m)return 0;return Number(m[2])*12+monthNumber[m[1]]}
+  function record(fields,indexes){const selling=Number(fields[indexes.sellingprice]),mmr=Number(fields[indexes.mmr]);if(!fields[indexes.sellingprice]?.trim()||!fields[indexes.mmr]?.trim()||!Number.isFinite(selling)||!Number.isFinite(mmr)||selling<=0||mmr<=0)return;
+    if(size===capacity)grow();
+    nums.modelYear[size]=category("modelYear",fields[indexes.year]);
+    nums.make[size]=category("make",fields[indexes.make]);
+    const make=fields[indexes.make]?.trim()||"",model=fields[indexes.model]?.trim()||"";
+    nums.model[size]=category("model",make&&model?`${make} ${model}`:model||make);
+    nums.body[size]=category("body",fields[indexes.body]);
+    nums.state[size]=category("state",fields[indexes.state]);
+    nums.transmission[size]=category("transmission",fields[indexes.transmission]);
+    nums.saleMonth[size]=parseSaleMonth(fields[indexes.saledate]);
+    nums.sellingprice[size]=selling;nums.mmr[size]=mmr;size++;
+  }
+  function showNotice(text){const n=$("notice");n.textContent=text;n.classList.remove("hidden");clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>n.classList.add("hidden"),7000)}
+  async function loadCsv(file){
+    if(!file)return;
+    if(!file.name.toLowerCase().endsWith(".csv")){showNotice("Please choose the car_prices.csv file.");return}
+    $("status").classList.remove("hidden");$("statusTitle").textContent="Loading auction records";$("statusText").textContent="Parsing and validating prices in your browser only.";
+    $("progressBar").style.width="0%";$("progressPct").textContent="0%";$("progressLabel").textContent="0 records";$("loadButton").disabled=true;
+    for(const k of names){maps[k].ids.clear();maps[k].labels.splice(0,maps[k].labels.length,"Unknown");nums[k]=null}
+    nums.sellingprice=null;nums.mmr=null;size=0;capacity=0;loaded=false;
+    try{
+      const reader=file.stream().pipeThrough(new TextDecoderStream()).getReader();
+      let field="",row=[],quoted=false,pendingQuote=false,lastProgress=0,indexes=null,headerDone=false,wantedIndexes=null;
+      let column=0,readChars=0;
+      function finishField(){if(!headerDone){row.push(field);field="";return}if(wantedIndexes.has(column))row[column]=field;column++;field=""}
+      function finishRow(){
+        if(!headerDone){
+          const h=row.map(v=>v.trim().replace(/^\uFEFF/,"").toLowerCase());
+          indexes={};for(const name of headersWanted){const idx=h.indexOf(name);if(idx<0)throw Error(`Required column “${name}” is missing.`);indexes[name]=idx}
+          wantedIndexes=new Set(Object.values(indexes));headerDone=true;row=[];field="";return;
+        }
+        if(row.length)record(row,indexes);row=[];field="";column=0;
+      }
+      while(true){
+        const {value,done}=await reader.read();if(done)break;
+        for(let i=0;i<value.length;i++){
+          const c=value.charCodeAt(i);
+          if(quoted){
+            if(pendingQuote){if(c===34){field+='"';pendingQuote=false;continue}quoted=false;pendingQuote=false;}
+            else if(c===34){pendingQuote=true;continue}
+            else{field+=value[i];continue}
+          }else if(c===34){quoted=true;continue}
+          if(c===44){finishField();continue}
+          if(c===10||c===13){finishField();finishRow();if(c===13&&value.charCodeAt(i+1)===10)i++;continue}
+          field+=value[i];
+        }
+        readChars+=value.length;
+        if(size-lastProgress>=30000){lastProgress=size;$("progressLabel").textContent=`${size.toLocaleString()} valid listings`;$("progressPct").textContent=`${Math.min(98,Math.floor(readChars/file.size*100))}%`;$("progressBar").style.width=`${Math.min(98,Math.floor(readChars/file.size*100))}%`;await new Promise(resolve=>setTimeout(resolve,0))}
+      }
+      if(pendingQuote)quoted=false;
+      if(field.length||row.length){finishField();finishRow()}
+      if(!size)throw Error("No valid rows were found. Check that this is the provided car_prices.csv.");
+      loaded=true;populateFilters();$("filterNote").textContent=`${size.toLocaleString()} priced listings loaded locally · select any combination of filters to cross-update every chart.`;
+      $("coverage").innerHTML=`${file.name} · processed in this browser<br>${(file.size/1024/1024).toFixed(1)} MB · never uploaded`;
+      $("progressBar").style.width="100%";$("progressLabel").textContent=`${size.toLocaleString()} valid listings`;$("progressPct").textContent="Ready";$("statusTitle").textContent="Dashboard ready";$("statusText").textContent="All charts and slicers now use the selected file.";
+      $("loadButton").disabled=false;
+      $("resetButton").disabled=false;for(const id of ["yearFilter","makeFilter","bodyFilter","stateFilter","transFilter"])$(id).disabled=false;
+      setTimeout(()=>$("status").classList.add("hidden"),500);render();
+    }catch(error){$("status").classList.add("hidden");showNotice(`Could not load the CSV: ${error.message}`);$("loadButton").disabled=false}
+  }
+  const selectDefs=[["yearFilter","modelYear","All model years"],["makeFilter","make","All makes"],["bodyFilter","body","All body types"],["stateFilter","state","All states"],["transFilter","transmission","All transmissions"]];
+  function populateFilters(){for(const [el,dim,all] of selectDefs){const s=$(el),prior=s.value;s.replaceChildren(new Option(all,""));const labels=maps[dim].labels.slice(1).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));for(const label of labels)s.add(new Option(label,label));if(labels.includes(prior))s.value=prior}}
+  function currentFilters(){return {modelYear:$("yearFilter").value,make:$("makeFilter").value,body:$("bodyFilter").value,state:$("stateFilter").value,transmission:$("transFilter").value}}
+  function aggregate(){const f=currentFilters(),filters={};for(const k of Object.keys(f)){if(f[k]){const key=k==="state"?f[k].toUpperCase():k==="modelYear"?f[k]:f[k].toLowerCase();filters[k]=maps[k].ids.get(key)}}
+    let n=0,sum=0,mmr=0,above=0,delta=0;const by={modelYear:new Map(),make:new Map(),model:new Map(),body:new Map(),state:new Map()};
+    for(let i=0;i<size;i++){
+      if((filters.modelYear!==undefined&&nums.modelYear[i]!==filters.modelYear)||(filters.make!==undefined&&nums.make[i]!==filters.make)||(filters.body!==undefined&&nums.body[i]!==filters.body)||(filters.state!==undefined&&nums.state[i]!==filters.state)||(filters.transmission!==undefined&&nums.transmission[i]!==filters.transmission))continue;
+      const s=nums.sellingprice[i],m=nums.mmr[i];n++;sum+=s;mmr+=m;delta+=s-m;if(s>m)above++;
+      for(const k of Object.keys(by)){const id=nums[k][i];let a=by[k].get(id);if(!a){a={n:0,s:0,m:0};by[k].set(id,a)}a.n++;a.s+=s;a.m+=m}
+    }
+    return {n,sum,mmr,delta,above,by};
+  }
+  function money(v,compact=false){if(!Number.isFinite(v))return "—";const sign=v<0?"−":"";const a=Math.abs(v);if(compact&&a>=1e9)return `${sign}$${(a/1e9).toFixed(2)}B`;if(compact&&a>=1e6)return `${sign}$${(a/1e6).toFixed(1)}M`;if(compact&&a>=1e4)return `${sign}$${(a/1e3).toFixed(1)}K`;return sign+"$"+Math.round(a).toLocaleString()}
+  function textWidth(ctx,s){return ctx.measureText(s).width}
+  function setup(canvas){const rect=canvas.getBoundingClientRect(),ratio=window.devicePixelRatio||1;canvas.width=Math.round(rect.width*ratio);canvas.height=Math.round(rect.height*ratio);const c=canvas.getContext("2d");c.scale(ratio,ratio);return {c,w:rect.width,h:rect.height}}
+  function axes(c,w,h,left=53,bottom=30){c.strokeStyle=palette.grid;c.lineWidth=1;c.beginPath();for(let y=18;y<h-bottom;y+=Math.max(34,(h-bottom-18)/4)){c.moveTo(left,y);c.lineTo(w-8,y)}c.stroke()}
+  function lineChart(id,rows){const {c,w,h}=setup($(id));c.clearRect(0,0,w,h);const left=51,bottom=29,top=17,right=9,innerW=w-left-right,innerH=h-top-bottom;axes(c,w,h,left,bottom);
+    if(!rows.length){emptyChart(c,w,h,"No model years in this filter");return}
+    const max=Math.max(...rows.flatMap(d=>[d.avgSale,d.avgMmr]))*1.12,min=Math.min(...rows.flatMap(d=>[d.avgSale,d.avgMmr]))*.88,span=max-min||1;
+    c.font="10px Segoe UI,Arial";c.textAlign="right";c.fillStyle=palette.muted;for(let j=0;j<=4;j++){const val=min+span*j/4,y=top+innerH*(1-j/4);c.fillText(money(val,true),left-8,y+3)}
+    const px=i=>left+(rows.length===1?innerW/2:i*innerW/(rows.length-1)),py=v=>top+innerH*(1-(v-min)/span);
+    for(const [key,color] of [["avgMmr",palette.blue],["avgSale",palette.teal]]){c.beginPath();c.strokeStyle=color;c.lineWidth=2;rows.forEach((d,i)=>i?c.lineTo(px(i),py(d[key])):c.moveTo(px(i),py(d[key])));c.stroke();rows.forEach((d,i)=>{c.beginPath();c.fillStyle=color;c.arc(px(i),py(d[key]),2.6,0,Math.PI*2);c.fill()})}
+    const step=Math.max(1,Math.ceil(rows.length/9));c.fillStyle=palette.muted;c.textAlign="center";for(let i=0;i<rows.length;i+=step)c.fillText(maps.modelYear.labels[rows[i].id],px(i),h-9)
+  }
+  function horizontalChart(id,rows,opts={}){const {c,w,h}=setup($(id));c.clearRect(0,0,w,h);if(!rows.length){emptyChart(c,w,h,"No matching records");return}const left=opts.left||120,right=58,top=9,rowH=Math.min(26,(h-18)/rows.length),barH=Math.min(13,rowH*.57),available=w-left-right;const vals=rows.map(x=>Math.abs(x.value)),max=Math.max(...vals,1);c.font="10px Segoe UI,Arial";
+    rows.forEach((d,i)=>{const y=top+i*rowH+rowH/2;if(y+rowH/2>h-2)return;const label=opts.label?opts.label(d):d.label;c.textAlign="right";c.fillStyle=palette.text;c.fillText(truncate(c,label,left-10),left-10,y+3);let x=left,barW=available*d.value/max;if(opts.center){const center=left+available/2;c.strokeStyle=palette.grid;c.beginPath();c.moveTo(center,top);c.lineTo(center,h-3);c.stroke();barW=available/2*vals[i]/max;x=d.value>=0?center:center-barW;c.fillStyle=d.value>=0?palette.teal:palette.amber}else c.fillStyle=opts.color||palette.teal;c.beginPath();c.roundRect(x,y-barH/2,Math.max(2,barW),barH,4);c.fill();c.textAlign="left";c.fillStyle=palette.muted;const value=opts.format?opts.format(d):d.valueLabel||money(d.value,true);c.fillText(value,Math.min(w-right+4,x+barW+6),y+3)})
+  }
+  function truncate(c,s,max){if(textWidth(c,s)<=max)return s;while(s.length>3&&textWidth(c,s+"…")>max)s=s.slice(0,-1);return s+"…"}
+  function emptyChart(c,w,h,msg){c.font="12px Segoe UI,Arial";c.fillStyle=palette.muted;c.textAlign="center";c.fillText(msg,w/2,h/2)}
+  function rowsFor(map,key,min=1){return [...map].filter(([,a])=>a.n>=min).map(([id,a])=>({id,n:a.n,avgSale:a.s/a.n,avgMmr:a.m/a.n,gap:(a.s-a.m)/a.n,total:a.s,label:maps[key].labels[id]}))}
+  function render(){const a=aggregate();$("kListings").textContent=a.n.toLocaleString();$("kGross").textContent=money(a.sum,true);$("kAverage").textContent=money(a.n?a.sum/a.n:NaN);$("kMmr").textContent=money(a.n?a.mmr/a.n:NaN);const gap=a.n?a.delta/a.n:0,share=a.n?a.above/a.n*100:0;$("kGap").textContent=(gap<0?"−":"")+money(Math.abs(gap));$("kGap").className="kpi-value "+(gap<0?"negative":"accent");$("kGapSub").textContent=`${a.n&&a.mmr?((a.delta/a.mmr)*100).toFixed(2):"0.00"}% of MMR · ${share.toFixed(1)}% sold above MMR`;
+    const modelYears=rowsFor(a.by.modelYear,"modelYear",60).filter(d=>/^(19|20)\d{2}$/.test(d.label)).sort((x,y)=>Number(x.label)-Number(y.label));
+    lineChart("yearChart",modelYears);
+    const states=rowsFor(a.by.state,"state",500).filter(d=>d.label!=="Unknown").sort((x,y)=>y.n-x.n).slice(0,9).sort((x,y)=>x.label.localeCompare(y.label)).map(d=>({label:d.label,value:d.gap,valueLabel:(d.gap<0?"−":"+")+money(Math.abs(d.gap))}));
+    horizontalChart("stateChart",states,{left:44,center:true,format:d=>d.valueLabel});
+    const makes=rowsFor(a.by.make,"make",1).filter(d=>d.label!=="Unknown").sort((x,y)=>y.n-x.n).slice(0,10).map(d=>({label:d.label,value:d.n,valueLabel:d.n.toLocaleString()}));
+    horizontalChart("makeChart",makes,{left:112,format:d=>d.valueLabel});
+    const models=rowsFor(a.by.model,"model",35).filter(d=>d.label!=="Unknown").sort((x,y)=>y.total-x.total).slice(0,10).map(d=>({label:d.label,value:d.total}));
+    horizontalChart("modelChart",models,{left:158,format:d=>money(d.value,true)});
+    const bodies=rowsFor(a.by.body,"body",100).filter(d=>d.label!=="Unknown").sort((x,y)=>y.avgSale-x.avgSale).slice(0,12).map(d=>({label:d.label,value:d.avgSale,n:d.n,valueLabel:money(d.avgSale)}));
+    horizontalChart("bodyChart",bodies,{left:145,format:d=>`${money(d.value)} · ${d.n.toLocaleString()}`});
+  }
+  $("loadButton").addEventListener("click",()=>$("fileInput").click());
+  $("fileInput").addEventListener("change",e=>{loadCsv(e.target.files?.[0]);e.target.value=""});
+  for(const [id] of selectDefs)$(id).addEventListener("change",render);
+  $("resetButton").addEventListener("click",()=>{for(const [id] of selectDefs)$(id).value="";render()});
+  window.addEventListener("resize",()=>{if(loaded)render()});
+  render();
+})();
+</script>
+</body>
+</html>
